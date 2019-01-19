@@ -1,5 +1,7 @@
 //Base class
 function Door(width, height) {
+    if(!(this instanceof Door))
+        return new Door(width, height);
     this.width = width;
     this.height = height;
     this.isLocked = false;
@@ -13,11 +15,13 @@ Door.prototype.lock = function() {
 
 //Derived class
 function WoodenDoor(width, height) {
+    if(!(this instanceof WoodenDoor))
+        return new WoodenDoor(width, height);
     Door.apply(this, arguments);
 }
 
 //Inheritance
-WoodenDoor.prototype = Object.create(WoodenDoor.prototype);
+WoodenDoor.prototype = Object.create(Door.prototype);
 WoodenDoor.prototype.constructor = WoodenDoor;
 
 WoodenDoor.prototype.creak = function() {
@@ -38,8 +42,10 @@ var DoorFactory = {
 }
 
 //To use 
-var door = DoorFactory.makeDoor(200, 200);
+var door = DoorFactory.makeDoor(220, 200);
 door.creak();
 door.lock();
+
+console.log(door.width);
 
 
