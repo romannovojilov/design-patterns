@@ -1,6 +1,6 @@
 "use strict";
 (function () {
-    var Validator = app.define("utils.data").Validator = function Validator(cfg) {
+    function Validator(cfg) {
         if (!(this instanceof Validator)) {
             return new Validator(cfg);
         }
@@ -45,8 +45,10 @@
         }
     };
     
+    //strategies
     Validator.prototype.strategies = {};
     
+    //strategy
     Validator.prototype.strategies.required = {
         validate: function (val) {
             return val.toString().trim() === ""
@@ -54,6 +56,7 @@
         message: "this field must not be empty."
     };
     
+    //strategy
     Validator.prototype.strategies.number = new function() {
         var _min = Number.MIN_SAFE_INTEGER, _max = Number.MAX_SAFE_INTEGER;
         var MSG = "this field value must be a number.";
@@ -80,7 +83,8 @@
         },
         this.message = MSG;
     };
-    
+
+    //strategy
     Validator.prototype.strategies.email = {
         validate: function (val) {
             return !/.+@.+\..+/i.test(val) && val.toString().length > 0;
@@ -88,6 +92,8 @@
         message: "this field value must be a e-mail."
     };
 
+    //registration of the Validator in namespace
+    app.define("utils.data").Validator = Validator;
 })();
 
 
