@@ -1,7 +1,7 @@
 
 
 function Home(settings) {
-    var _name = settings.name;
+    var _name = settings.name || "";
     var _roof = settings.roof || false;
     var _walls = settings.walls || false;
     var _windows = settings.windows || false;
@@ -51,8 +51,8 @@ Home.Builder = function (name) {
         return this;
     };
     this.build = function () {
-        if(typeof name === "undefined")
-            throw new Error("name is required field");
+        if(typeof settings.name === "undefined")
+            throw new Error("name param is required");
         return new Home(settings);
     }
 };
