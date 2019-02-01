@@ -1,17 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <script src="src/js/creational-patterns/simple-factory.js"></script>
-    <script src="src/js/creational-patterns/namespace.js"></script>
-    <script src="src/js/behavioral-patterns/strategy.js"></script>
-    <script src="src/js/creational-patterns/builder.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/patterns/behavioral/validator.js"></script>
+    <script src="app/patterns/creational/doors.js"></script>
+    <script>
+        //main global object
+        console.log(App);
+
+        
+        //strategy example
+        var validators = App.patterns.behavioral.validators;
+
+        function User(firstName, lastName, age, email) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+            this.email = email;
+        }
+
+        var data = new User(
+            "Ivan", 
+            "", 
+            "150", 
+            "ivan@example.com"
+        );
+
+        var config = new User(
+            { strategies: ["required"], title: "First name" },
+            { strategies: ["required"], title: "Last name" },
+            { strategies: ["required", { name: "number", args: [0, 130] }], title: "Age" },
+            { strategies: ["required", "email"], title: "E-mail" }
+        );
+
+        var validator = new validators.Validator(config);
+        
+        var isSuccess = !validator.validate(data);
+
+        console.log("Validate success: " + isSuccess);
+        console.log("Errors:");
+        console.log(validator.messages);
+
+
+        //simple factory example
+        var doors = App.patterns.creational.doors;
+        console.log(doors);
+
+        var myDoor = doors.doorFactory.makeDoor(200, 300);
+        console.log(myDoor);
+
+        var myWoodenDoor = doors.doorFactory.makeDoor(200, 300, "WoodenDoor");
+        console.log(myWoodenDoor);
+
+        var myCastomDoor = new doors.WoodenDoor(150, 243);
+        myCastomDoor.lock();
+        console.log(myCastomDoor);
+        myCastomDoor.lock();
+        console.log(myCastomDoor);
+
+    </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>
