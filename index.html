@@ -50,6 +50,16 @@
             console.log("Errors:");
             console.log(validator.messages);
 
+            var strategies = validators.Validator.prototype.strategies;
+            console.log(strategies);
+
+            var num = null;
+            console.log("num = " + num);
+            console.log("num is not empty? " + (!strategies.required.validate(num)));
+            console.log("num is number or empty? " + (!strategies.number.validate(num)));
+            console.log("num is number between 1 and 5 or empty? " + (!strategies.number.validate(num, 0, 5)));
+            console.log("num is email or empty? " + (!strategies.email.validate(num)));
+
 
             //simple factory example
             var doors = App.patterns.creational.doors;

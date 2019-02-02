@@ -50,6 +50,8 @@
     
     Validator.prototype.strategies.required = {
         validate: function (val) {
+            if(typeof val === "undefined" || val === null)
+                val = "";
             return val.toString().trim() === ""
         },
         message: "this field must not be empty."
@@ -58,6 +60,8 @@
     Validator.prototype.strategies.number = new function () {
         var MSG = "this field value must be a number.";
         this.validate = function (val, min, max) {
+            if(typeof val === "undefined" || val === null)
+                val = "";
             var _min = Number.MIN_VALUE, _max = Number.MAX_VALUE;
             this.message = MSG;
             if (typeof min === "number") {
@@ -83,6 +87,8 @@
 
     Validator.prototype.strategies.email = {
         validate: function (val) {
+            if(typeof val === "undefined" || val === null)
+                val = "";
             return !/.+@.+\..+/i.test(val) && val.toString().length > 0;
         },
         message: "this field value must be a e-mail."
