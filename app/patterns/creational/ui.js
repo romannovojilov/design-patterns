@@ -1,6 +1,5 @@
 //factory method
 
-
 "use strict";
 (function () {
     var namespace = App.define("patterns.creational.ui");
@@ -9,7 +8,8 @@
 
     }
     
-    Control.prototype.render = function(type) {
+    Control.prototype.render = function() {
+        this.update();
         return "Control: " + this.name + " <br /> " + this.control + " <br /><br />";
     }
     
@@ -29,11 +29,15 @@
     
     Control.Button = function() {
         this.name = "Button";
-        this.control = "<input type='button' value='" + this.name + "' />";
+        this.update = function() {
+            this.control = "<input type='button' value='" + this.name + "' />";
+        }
     }
     Control.Text = function() {
         this.name = "Text";
-        this.control = "<input type='text' value='' placeholder='" + this.name + "' />";
+        this.update = function() {
+            this.control = "<input type='text' value='' placeholder='" + this.name + "' />";
+        }
     }
     
     namespace.Control = Control;
