@@ -12,111 +12,115 @@
     <script src="app/patterns/creational/doors.js"></script>
     <script src="app/patterns/creational/houses.js"></script>
     <script src="app/patterns/creational/ui.js"></script>
-    <script>
-        (function () {
-
-            //main global object
-            console.log(App);
-
-
-            //strategy example
-            var validators = App.patterns.behavioral.validators;
-
-            function User(firstName, lastName, age, email) {
-                this.firstName = firstName;
-                this.lastName = lastName;
-                this.age = age;
-                this.email = email;
-            }
-
-            var data = new User(
-                "Ivan",
-                "",
-                "150",
-                "ivan@example.com"
-            );
-
-            var config = new User(
-                { strategies: ["required"], title: "First name" },
-                { strategies: ["required"], title: "Last name" },
-                { strategies: ["required", { name: "number", args: [0, 130] }], title: "Age" },
-                { strategies: ["required", "email"], title: "E-mail" }
-            );
-
-            var validator = new validators.Validator(config);
-
-            var isSuccess = !validator.validate(data);
-
-            console.log("Validate success: " + isSuccess);
-            console.log("Errors:");
-            console.log(validator.messages);
-
-            var strategies = validators.Validator.prototype.strategies;
-            console.log(strategies);
-
-            var num = null;
-            console.log("num = " + num);
-            console.log("num is not empty? " + (!strategies.required.validate(num)));
-            console.log("num is number or empty? " + (!strategies.number.validate(num)));
-            console.log("num is number between 1 and 5 or empty? " + (!strategies.number.validate(num, 0, 5)));
-            console.log("num is email or empty? " + (!strategies.email.validate(num)));
-
-
-            //simple factory example
-            var doors = App.patterns.creational.doors;
-            console.log(doors);
-
-            var myDoor = doors.doorFactory.makeDoor(200, 300);
-            console.log(myDoor);
-
-            var myWoodenDoor = doors.doorFactory.makeDoor(200, 300, "WoodenDoor");
-            console.log(myWoodenDoor);
-
-            var myCastomDoor = new doors.WoodenDoor(150, 243);
-            myCastomDoor.lock();
-            console.log(myCastomDoor);
-            myCastomDoor.lock();
-            console.log(myCastomDoor);
-
-
-            //builder example
-            var houses = App.patterns.creational.houses;
-            console.log(houses);
-            
-            var myHouse = new houses.House.Builder("built house")
-                .withRoof(true)
-                .withWalls(true)
-                .withDoors(true)
-                .build();
-
-            console.log("house name: " + myHouse.getName());
-            console.log("with roof: " + myHouse.getRoof());
-            console.log("with walls: " + myHouse.getWalls());
-            console.log("with windows: " + myHouse.getWindows());
-            console.log("with doors: " + myHouse.getDoors());
-            console.log(myHouse);
-
-
-            //factory method example
-            var ui = App.patterns.creational.ui;
-            console.log(ui);
-
-            var formItems = ["Text", "Text", "Text", "Button"];
-            for(var i = 0; i < formItems.length; i++) {
-                var control = ui.Control.create(formItems[i]);
-                document.write(control.render());    
-            }
-            
-            var btn = ui.Control.create("Button");
-            btn.name = "Hello";
-            document.write(btn.render());
-
-        })();
-    </script>
+    
 </head>
 
 <body>
 
 </body>
+<script>
+    (function () {
 
+        //main global object
+        console.log(App);
+
+
+        //strategy example
+        var validators = App.patterns.behavioral.validators;
+
+        function User(firstName, lastName, age, email) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+            this.email = email;
+        }
+
+        var data = new User(
+            "Ivan",
+            "",
+            "150",
+            "ivan@example.com"
+        );
+
+        var config = new User(
+            { strategies: ["required"], title: "First name" },
+            { strategies: ["required"], title: "Last name" },
+            { strategies: ["required", { name: "number", args: [0, 130] }], title: "Age" },
+            { strategies: ["required", "email"], title: "E-mail" }
+        );
+
+        var validator = new validators.Validator(config);
+
+        var isSuccess = !validator.validate(data);
+
+        console.log("Validate success: " + isSuccess);
+        console.log("Errors:");
+        console.log(validator.messages);
+
+        var strategies = validators.Validator.prototype.strategies;
+        console.log(strategies);
+
+        var num = null;
+        console.log("num = " + num);
+        console.log("num is not empty? " + (!strategies.required.validate(num)));
+        console.log("num is number or empty? " + (!strategies.number.validate(num)));
+        console.log("num is number between 1 and 5 or empty? " + (!strategies.number.validate(num, 0, 5)));
+        console.log("num is email or empty? " + (!strategies.email.validate(num)));
+
+
+        //simple factory example
+        var doors = App.patterns.creational.doors;
+        console.log(doors);
+
+        var myDoor = doors.doorFactory.makeDoor(200, 300);
+        console.log(myDoor);
+
+        var myWoodenDoor = doors.doorFactory.makeDoor(200, 300, "WoodenDoor");
+        console.log(myWoodenDoor);
+
+        var myCastomDoor = new doors.WoodenDoor(150, 243);
+        myCastomDoor.lock();
+        console.log(myCastomDoor);
+        myCastomDoor.lock();
+        console.log(myCastomDoor);
+
+
+        //builder example
+        var houses = App.patterns.creational.houses;
+        console.log(houses);
+        
+        var myHouse = new houses.House.Builder("built house")
+            .withRoof(true)
+            .withWalls(true)
+            .withDoors(true)
+            .build();
+
+        console.log("house name: " + myHouse.getName());
+        console.log("with roof: " + myHouse.getRoof());
+        console.log("with walls: " + myHouse.getWalls());
+        console.log("with windows: " + myHouse.getWindows());
+        console.log("with doors: " + myHouse.getDoors());
+        console.log(myHouse);
+
+
+        //factory method example
+        var ui = App.patterns.creational.ui;
+        console.log(ui);
+
+        var formItems = ["Text", "Text", "Text", "Button"];
+        var form = "";
+        for(var i = 0; i < formItems.length; i++) {
+            var control = ui.Control.create(formItems[i]);
+            form += control.render();    
+        }
+
+        var body = document.body || document.getElementsByTagName('body')[0];
+        body.innerHTML += form;
+        
+        var btn = ui.Control.create("Button");
+        btn.name = "Hello";
+        body.innerHTML += btn.render();
+
+    })();
+</script>
 </html>
