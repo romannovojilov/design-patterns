@@ -1,0 +1,30 @@
+{
+  "name": "design-patterns",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "grunt",
+    "build": "grunt build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romannovojilov/design-patterns.git"
+  },
+  "author": "Roman Novojilov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/romannovojilov/design-patterns/issues"
+  },
+  "homepage": "https://github.com/romannovojilov/design-patterns#readme",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^3.0.0",
+    "grunt-contrib-jshint": "^2.0.0",
+    "grunt-contrib-uglify": "^4.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-remove-logging": "^0.2.0"
+  }
+}
