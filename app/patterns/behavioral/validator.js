@@ -1,6 +1,4 @@
 //strategy
-
-"use strict";
 (function () {
     var namespace = App.define("patterns.behavioral.validators");
 

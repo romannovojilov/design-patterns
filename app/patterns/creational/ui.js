@@ -1,6 +1,4 @@
 //factory method
-
-"use strict";
 (function () {
     var namespace = App.define("patterns.creational.ui");
 

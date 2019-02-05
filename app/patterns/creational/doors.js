@@ -1,6 +1,4 @@
 //simple factory
-
-"use strict";
 (function () {
     var namespace = App.define("patterns.creational.doors");
 

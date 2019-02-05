@@ -1,7 +1,4 @@
 //builder
-
-
-"use strict";
 (function () {
     var namespace = App.define("patterns.creational.houses");
 

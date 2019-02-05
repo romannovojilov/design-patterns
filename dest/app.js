@@ -22,8 +22,6 @@ Object.defineProperty(App, "define", {
     writable: false
 });
 //strategy
-
-"use strict";
 (function () {
     var namespace = App.define("patterns.behavioral.validators");
 
@@ -120,8 +118,6 @@ Object.defineProperty(App, "define", {
     namespace.Validator = Validator;
 })();
 //simple factory
-
-"use strict";
 (function () {
     var namespace = App.define("patterns.creational.doors");
 
@@ -182,9 +178,6 @@ Object.defineProperty(App, "define", {
 
 })();
 //builder
-
-
-"use strict";
 (function () {
     var namespace = App.define("patterns.creational.houses");
 
@@ -248,8 +241,6 @@ Object.defineProperty(App, "define", {
     namespace.House = House;
 })();
 //factory method
-
-"use strict";
 (function () {
     var namespace = App.define("patterns.creational.ui");
 
